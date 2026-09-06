@@ -15,18 +15,20 @@ function Login() {
 
   const [error, setError] = useState("");
 
-  const handleSubmit = (e: FormEvent) => {
+ // 1. Add "async" right here
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    setError(""); // (If you have an error state setup like in Signup)
 
-    setError("");
-
-    const result = loginUser(email, password);
+    // 2. Add "await" right here
+    const result = await loginUser(email, password);
 
     if (!result.success) {
       setError(result.message);
       return;
     }
 
+    // 3. Success! Send them to the dashboard/home
     navigate("/");
   };
 
