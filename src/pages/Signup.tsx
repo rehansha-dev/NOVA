@@ -20,7 +20,8 @@ function Signup() {
 
   const [error, setError] = useState("");
 
-  const handleSubmit = (e: FormEvent) => {
+ // 1. Add "async" here
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
     setError("");
@@ -35,7 +36,8 @@ function Signup() {
       return;
     }
 
-    const result = signupUser(
+    // 2. Add "await" right here
+    const result = await signupUser(
       name,
       email,
       password,
